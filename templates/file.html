@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{STATIC_URL}}static/file.css">
+    <!--<script>
+        function fileValidation() {
+            var fileInput = 
+                document.getElementById('file');
+              
+            var filePath = fileInput.value;
+          
+            // Allowing file type
+            var allowedExtensions = 
+                    /(\.csv)$/i;
+              
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type only Teans CSV allowed...');
+                fileInput.value = '';
+                return false;
+            } 
+        }
+    </script>-->
+    <title>Attendence Compiler</title>
+</head>
+<body>
+    <div class="head">
+        <h1>Attendence Compiler</h1>
+    </div>
+    
+    <div class="fileform">
+        <form method="POST" action="file" enctype="multipart/form-data">
+            {%csrf_token%}
+            <input type="hidden" name="num" value="{{no}}">
+                {%for num in n%}
+                <div class="button">
+                    <input type="file"name="{{num}}">
+                </div>
+                    
+                {%endfor%}
+            <input type="submit" id="sub" value="Compile">
+        </form>
+    </div>
+</body>
+</html>
